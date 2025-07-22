@@ -57,12 +57,14 @@
                 <input type="email" id="email" name="email" placeholder="Enter email">
 
                 <label for="educ_level">Educational Level:</label>
-                <select id="educ_level" name="educ_level">
-                    <option value="">Select Level</option>
-                    <option value="Elementary">Elementary</option>
-                    <option value="High School">High School</option>
-                    <option value="College">College</option>
-                </select>
+                <input list="educ_levels" id="educ_level" name="educ_level" placeholder="Enter or select educational level">
+                <datalist id="educ_levels">
+                    <option value="Kindergarten">
+                    <option value="Elementary">
+                    <option value="High School">
+                    <option value="Senior High School">
+                    <option value="College">
+                </datalist>
 
                 <script>
                     document.getElementById('educ_level').addEventListener('change', function() {
@@ -85,8 +87,17 @@
                     <input type="text" id="section" name="section" placeholder="Enter section name">
                 </div>
 
-                <label for="previous_school">Previous School:</label>
+                <label for="previous_school">Previous School Attended:</label>
                 <input type="text" id="previous_school" name="previous_school" placeholder="Enter previous school name">
+
+                <label for="previous_school_address">Previous School Address:</label>
+                <input type="text" id="previous_school_address" name="previous_school_address" placeholder="Enter previous school address">
+
+                <label for="religion">Religion:</label>
+                <input type="text" id="religion" name="religion" placeholder="Enter religion">
+
+                <label for="civil_status">Civil Status:</label>
+                <input type="text" id="civil_status" name="civil_status" placeholder="e.g. Single, Married, etc.">
 
                 <hr style="margin: 20px 0;">
 
@@ -182,6 +193,12 @@
     imgPreview.src = imgPreview.getAttribute('data-default');
     imgPreview.style.display = 'block';
 });
+
+    @if ($errors->any())
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('addStudentModal').style.display = 'block';
+        });
+    @endif
     </script>
 </body>
 </html>

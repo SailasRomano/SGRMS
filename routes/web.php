@@ -35,6 +35,7 @@ Route::prefix('Head')->group(function () {
 
     Route::get('/students/next-id', [StudentController::class, 'getNextStudentId']);
     Route::post('/students/add', [StudentController::class, 'addStudent'])->name('students.add');
+    Route::post('students/import', [StudentController::class, 'import'])->name('students.import');
 
 });
 

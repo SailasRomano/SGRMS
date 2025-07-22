@@ -124,7 +124,7 @@
                     <h2>Student List</h2>
                     <div class="search-bar">
                         <input type="text" id="search" name="search" class="search" placeholder="Search by ID or Name">
-                        <button class="btn btn-add" onclick="openAddModal()">Add Student</button>
+                        <button class="btn btn-add" onclick="openChooseAddModal()">Add Student</button>
                     </div>
                 </div>
 
@@ -185,6 +185,29 @@
         </div>
     </main>
 </section>
+
+<!-- Choose Action Modal -->
+<div id="chooseAddModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <h3>Add Students</h3>
+        <button onclick="openImportModal()">Import Excel</button>
+        <button onclick="openAddStudentModal()">Add Single Student</button>
+        <button onclick="closeChooseAddModal()">Cancel</button>
+    </div>
+</div>
+
+<!-- Import Modal -->
+<div id="importModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <h3>Import Students from Excel</h3>
+        <form action="{{ route('students.import') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="students_file" accept=".xlsx,.xls,.csv" required>
+            <button type="submit">Import</button>
+            <button type="button" onclick="closeImportModal()">Cancel</button>
+        </form>
+    </div>
+</div>
 
 @include('Head.Modal.studentModal')
 
